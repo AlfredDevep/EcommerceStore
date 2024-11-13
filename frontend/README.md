@@ -10,3 +10,22 @@ Currently, two official plugins are available:
 
 npm i react-bootstrap bootstrap react-icons
 
+
+npm i react-router-dom
+
+//Header
+npm i react-router-bootstrap 
+
+BACKEND
+
+    npm init 
+
+    npm start 
+
+EXPRESS
+    npm i express 
+
+NODEMON
+
+    npm i -D nodemon concurrently
+
