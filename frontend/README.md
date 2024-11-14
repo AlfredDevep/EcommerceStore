@@ -29,3 +29,22 @@ NODEMON
 
     npm i -D nodemon concurrently
 
+.ENV
+
+    npm i -D dotenv
+
+Frontend 
+    npm i axios
+
+
+Mongodb
+
+Mongo Atlas / Compas
+
+npm i mongoose
+
+Bcrypt
+    npm i bcryptjs
+
+    npm i colors
+    
