@@ -47,4 +47,6 @@ Bcrypt
     npm i bcryptjs
 
     npm i colors
-    
+
+REDUX
+    npm i @reduxjs/toolkit react-redux

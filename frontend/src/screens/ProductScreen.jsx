@@ -1,29 +1,17 @@
 import React from 'react'
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Row, Col, Image, ListGroup, Button, Card } from 'react-bootstrap';
 import { Rating } from '../components/Rating';
-import axios from 'axios';
-
+import { useGetProductDetailsQuery } from '../slices/productApiSlice';
+import  Loader  from '../components/Loader';
+import { Message } from '../components/Message';
 
 export const ProductScreen = () => {
-    const [product, setProduct] = useState([]);
     
-    const { id:productId } = useParams();
+    const { id:productId } = useParams();   
 
-    useEffect(() => {
-        const fetchProduct = async () => {
-            try {
-                const { data } = await axios.get(`http://localhost:5000/api/products/${productId}`); // Ensure the URL is correct
-                console.log('Fetched product:', data); // Debugging log
-                setProduct(data);
-            } catch (error) {
-                console.error('Error fetching product:', error);
-            }
-        };
-        fetchProduct();
-    }, [productId]);    
+    const { data:product, isLoading, error } = useGetProductDetailsQuery(productId);
     
     console.log(product);
 
@@ -32,7 +20,13 @@ export const ProductScreen = () => {
         <Link className='btn btn-light my-3' to='/'>
             Go Back
         </Link>
-        <Row>
+
+        {   isLoading ? (
+            <Loader />
+        ) : error ? (
+            <Message variant='danger'> { error?.data.message || error.error} </Message>  
+        ) : (
+            <Row>
             <Col md={6}>
             <Image src={product.image} alt={product.name} fluid/>
             </Col>
@@ -84,6 +78,8 @@ export const ProductScreen = () => {
             </Card>
             </Col>
         </Row>
+        )}
+        
     </>
   )
 }
