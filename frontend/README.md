@@ -50,3 +50,12 @@ Bcrypt
 
 REDUX
     npm i @reduxjs/toolkit react-redux
+
+
+JWT
+    npm i jsonwebtoken
+
+    npm i cookie-parser
+
+Frontend
+    npm i react-toastify
